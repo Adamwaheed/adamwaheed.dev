@@ -3,13 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Adam Waheed - Software Engineer</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 1px solid #ddd;
+            object-fit: cover;
+        }
+        
+        .header-text h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+        
+        .header-text p {
+            margin-bottom: 5px;
+        }
+        
+        /* Navigation */
+        .tabs {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .tab-button.active {
+            font-weight: bold;
+        }
+        
+        .tab-button:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            font-weight: normal;
+        }
+        
+        .subsection-title {
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .paragraph {
+            margin-bottom: 15px;
+        }
+        
+        /* Job Items */
+        .job-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .job-item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+        
+        .company {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .period {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        /* Skills List */
+        .skills-list {
+            list-style-type: none;
+            padding: 0;
+            column-count: 2;
+            column-gap: 20px;
+        }
+        
+        .skill-item {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .skill-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 5px;
+            height: 5px;
+            background-color: #000;
+            border-radius: 50%;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background: none;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-list {
+                column-count: 1;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-pic {
+                margin: 0 auto 15px;
+            }
+            
+            .tab-button:not(:last-child)::after {
+                margin-left: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <h1>Adam Waheed</h1>
-    <small>Developer</small>
-    <p>Adam Waheed is a software developer with a passion for creating innovative solutions.</p>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://avatars.githubusercontent.com/u/677368?v=4" alt="Profile Photo" class="profile-pic">
+            <div class="header-text">
+                <h1>Adam Waheed (Adam)</h1>
+                <p>Software Engineer & Educator</p>
+                <p>Maldives (Remote)</p>
+            </div>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('about')">About</button>
+            <button class="tab-button" onclick="showTab('experience')">Experience</button>
+            <button class="tab-button" onclick="showTab('education')">Education</button>
+            <button class="tab-button" onclick="showTab('projects')">Projects</button>
+            <button class="tab-button" onclick="showTab('skills')">Skills</button>
+            <button class="tab-button" onclick="showTab('contact')">Contact</button>
+        </div>
+        
+        <!-- About Section -->
+        <div id="about" class="content-section active">
+            <h2 class="section-title">About Me</h2>
+            
+            <h3 class="subsection-title">My Journey</h3>
+            <p class="paragraph">
+                I grew up on an island in the Maldives with very limited resources. In grade 8, we had no concept of the internet. After completing my O-Levels with a few passing subjects, I got my first computer with just 32MB of RAM. This was the beginning of my love and interest in computing.
+            </p>
+            <p class="paragraph">
+                I moved to Male for work, but finding life in the city challenging, I enrolled in hotel school primarily to escape the urban environment. The greatest benefit was unlimited access to the computer lab. After completing my studies, I worked at Coca Island Resort - my first experience in the hospitality industry. Though the resort was busy, I treasured my free time playing guitar and using the internet and computer lab.
+            </p>
+            <p class="paragraph">
+                Eventually, I left the resort industry and returned to Male, working in a small shop where I befriended members of the "Bosniya" gang and learned to play guitar. After being let go for my gang associations, I joined the Human Rights Commission as a Contract Survey Manager, traveling to islands with new friends.
+            </p>
+            <p class="paragraph">
+                Later, I worked as a Service Center Manager at a motorbike shop in the same area, enjoying the experience with different motorbikes. I then accepted a position at Albion Store as an Inventory Controller, where I began automating processes and reorganizing the logistics department.
+            </p>
+            <p class="paragraph">
+                Simultaneously, I developed websites for a company called "atoll-tech," creating sites for government and private clients. Recognizing my potential, Albion Store provided a fully-paid scholarship to study Software Engineering at HELP University. After earning my bachelor's degree, they encouraged me to pursue IT work, leading to my first software engineering job at MPL.
+            </p>
+            <p class="paragraph">
+                At MPL, I contributed to developing the entire Finance Module and worked as a Senior Developer on the Port Management System. Eventually, I wanted to return to island life and found remote work that allowed me to live with my family in our island home.
+            </p>
+            
+            <h3 class="subsection-title">Professional Work</h3>
+            <p class="paragraph">
+                I'm now a seasoned software engineer with over 10 years of experience, specializing in enterprise solutions with a focus on HR systems and Oracle technologies.
+            </p>
+            <p class="paragraph">
+                I founded the WeLearn Institute to help aspiring developers in the Maldives gain the skills they need to succeed in the tech industry. My HR software solution has been successfully deployed in numerous government organizations throughout the Maldives, including all Courts, Stelco, and Maldives Ports Limited, helping to modernize and streamline their operations.
+            </p>
+        </div>
+        
+        <!-- Experience Section -->
+        <div id="experience" class="content-section">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="job-item">
+                <h3>Core Engineer</h3>
+                <p class="company">Hello World Maldives · Self-employed</p>
+                <p class="period">Feb 2021 - Present · 4 yrs 3 mos</p>
+                <p class="period">Maldives · Remote</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Lead Software Engineer</h3>
+                <p class="company">Pension Office · Full-time</p>
+                <p class="period">Sep 2022 - Feb 2023 · 6 mos</p>
+                <p class="period">Maldives</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Oracle Technical Developer</h3>
+                <p class="company">Maldives Ports Limited · Full-time</p>
+                <p class="period">Jul 2022 - Jan 2023 · 7 mos</p>
+                <p class="period">Maldives · Remote</p>
+                <p class="paragraph">Skills: Oracle Database · OTBI · BI Publisher · Oracle Fusion Applications (OFA)</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Software Developer</h3>
+                <p class="company">Hummingbird Travel · Full-time</p>
+                <p class="period">Jan 2021 - May 2022 · 1 yr 5 mos</p>
+                <p class="period">Maldives</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Senior Software Engineer</h3>
+                <p class="company">PMO Maldives · Full-time</p>
+                <p class="period">May 2018 - Jan 2021 · 2 yrs 9 mos</p>
+                <p class="period">Maldives</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Core Engineer</h3>
+                <p class="company">Loopcraft · Full-time</p>
+                <p class="period">May 2017 - Jan 2020 · 2 yrs 9 mos</p>
+                <p class="period">Maldives</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Software Developer</h3>
+                <p class="company">Maldives Ports Limited</p>
+                <p class="period">Mar 2015 - Apr 2018 · 3 yrs 2 mos</p>
+                <p class="period">Maldives</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>Computer Programmer</h3>
+                <p class="company">Maldives Ports Limited</p>
+                <p class="period">Mar 2015 - Mar 2017 · 2 yrs 1 mo</p>
+                <p class="period">Maldives</p>
+                <p class="paragraph">Developing Port Management System (Bandharu)</p>
+                <a href="http://my.port.mv/" target="_blank" rel="noopener noreferrer">http://my.port.mv/</a>
+            </div>
+        </div>
+        
+        <!-- Education Section -->
+        <div id="education" class="content-section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="job-item">
+                <h3>Bachelor of Computer Science</h3>
+                <p class="company">HELP University</p>
+                <p class="period">2010 - 2014</p>
+            </div>
+        </div>
+        
+        <!-- Projects Section -->
+        <div id="projects" class="content-section">
+            <h2 class="section-title">Projects & Ventures</h2>
+            
+            <div class="job-item">
+                <h3><a href="https://www.facebook.com/WeLearnmv">WeLearn Institute</a></h3>
+                
+                <p class="paragraph">Educational institute teaching and mentoring aspiring software engineers in the Maldives.</p>
+                <p class="company">Founder & Educator</p>
+            </div>
+            
+            <div class="job-item">
+                <h3>HR Software Solution</h3>
+                <a href="https://helloworld.mv/">Helloworld Maldives</a>
+                <p class="paragraph">Proprietary HR software deployed in various Maldivian government organizations including all Courts, Stelco, and Maldives Ports Limited.</p>
+                <p class="company">Creator & Developer</p>
+            </div>
+        </div>
+        
+        <!-- Skills Section -->
+        <div id="skills" class="content-section">
+            <h2 class="section-title">Skills</h2>
+            
+            <ul class="skills-list">
+                <li class="skill-item">JavaScript</li>
+                <li class="skill-item">React</li>
+                <li class="skill-item">Node.js</li>
+                <li class="skill-item">Oracle Database</li>
+                <li class="skill-item">OTBI</li>
+                <li class="skill-item">BI Publisher</li>
+                <li class="skill-item">Oracle Fusion Applications</li>
+                <li class="skill-item">Software Architecture</li>
+                <li class="skill-item">Team Leadership</li>
+                <li class="skill-item">Education</li>
+            </ul>
+        </div>
+        
+        <!-- Contact Section -->
+        <div id="contact" class="content-section">
+            <h2 class="section-title">Contact Me</h2>
+            
+            <div class="contact-grid">
+                <div>
+                    <p class="paragraph">Feel free to reach out if you're interested in working together or have any questions about my services or educational programs.</p>
+                    
+                    <div class="contact-item">
+                        <strong>Email: </strong>
+                        <span>adamwaheed@gmail.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <strong>Location: </strong>
+                        <span>Maldives (Remote)</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <strong>GitHub: </strong>
+                        <a href="https://github.com/Adamwaheed" target="_blank" rel="noopener noreferrer">github.com/example</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <strong>LinkedIn: </strong>
+                        <a href="https://www.linkedin.com/in/adam-waheed-68155031/" target="_blank" rel="noopener noreferrer">linkedin.com/in/example</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; <span id="year"></span> Mohamed Ahmed - All Rights Reserved</p>
+        </div>
+    </div>
+    
+    <script>
+        // Simple tab switching function
+        function showTab(tabId) {
+            // Hide all content sections
+            const contentSections = document.querySelectorAll('.content-section');
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected content section
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update active button
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Find the button that was clicked and make it active
+            const buttons = Array.from(tabButtons);
+            const activeButton = buttons.find(button => {
+                return button.textContent.toLowerCase() === tabId;
+            });
+            
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Simple form submission (replace with your own logic)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! In a real website, this would send your message.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
